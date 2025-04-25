@@ -39,6 +39,9 @@ for col, selected in zip([city_col, age_col, edu_col, job_col], [selected_city, 
 selected_section = st.radio("📈 Select Section", ["📱 Digital Demographic", "🤝 Trust & Claims", "❤️ Loyalty Signals"], horizontal=True)
 
 if selected_section == "📱 Digital Demographic":
+    df['Digital - App'] = df['Digital - App'].replace({0: 'No', 1: 'Yes'})
+    df['Digital - Website'] = df['Digital - Website'].replace({0: 'No', 1: 'Yes'})
+
     app_cross = pd.crosstab(df[age_col], df['Digital - App'])
     web_cross = pd.crosstab(df[age_col], df['Digital - Website'])
     edu_app_cross = pd.crosstab(df[edu_col], df['Digital - App'])
